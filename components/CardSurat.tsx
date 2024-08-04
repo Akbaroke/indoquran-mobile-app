@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 // import { useFocus } from 'react-native-web-hooks';
 import { router } from 'expo-router';
 import Nomer from './Nomer';
@@ -50,3 +50,56 @@ export default function CardSurat({
     </TouchableOpacity>
   );
 }
+
+export const SkeletonCardSurat = () => {
+  return (
+    <View className="flex-row text-sm justify-between border-b border-gray-200 w-full cursor-pointer p-2 py-4 transition-all duration-300">
+      <View className="flex-row space-y-0">
+        <View
+          className="bg-gray-100"
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 100,
+          }}
+        />
+        <View className="flex-col ml-2 items-center gap-y-2">
+          <View
+            className="bg-gray-100"
+            style={{
+              width: 100,
+              height: 8,
+              borderRadius: 4,
+            }}
+          />
+          <View
+            className="bg-gray-100"
+            style={{
+              width: 100,
+              height: 8,
+              borderRadius: 4,
+            }}
+          />
+        </View>
+      </View>
+      <View className="flex-col items-center gap-y-2">
+        <View
+          className="bg-gray-100"
+          style={{
+            width: 50,
+            height: 8,
+            borderRadius: 4,
+          }}
+        />
+        <View
+          className="bg-gray-100"
+          style={{
+            width: 50,
+            height: 8,
+            borderRadius: 4,
+          }}
+        />
+      </View>
+    </View>
+  );
+};

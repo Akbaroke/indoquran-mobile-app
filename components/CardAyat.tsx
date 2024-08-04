@@ -48,7 +48,7 @@ export function LoadingSkeletonCardAyat() {
         <View className="flex-col gap-5 w-full">
           <View className="flex-row items-center justify-between w-full">
             <View
-              className="bg-gray-200"
+              className="bg-gray-100"
               style={{
                 width: 20,
                 height: 20,
@@ -57,7 +57,7 @@ export function LoadingSkeletonCardAyat() {
             />
           </View>
           <View
-            className="bg-gray-200"
+            className="bg-gray-100"
             style={{
               width: '100%',
               height: 20,
@@ -67,7 +67,7 @@ export function LoadingSkeletonCardAyat() {
         </View>
         <View className="flex-col gap-3">
           <View
-            className="bg-gray-200"
+            className="bg-gray-100"
             style={{
               width: '100%',
               height: 15,
@@ -75,7 +75,7 @@ export function LoadingSkeletonCardAyat() {
             }}
           />
           <View
-            className="bg-gray-200"
+            className="bg-gray-100"
             style={{
               width: '100%',
               height: 15,

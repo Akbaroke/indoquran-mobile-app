@@ -29,11 +29,7 @@ const TabBar = ({
             ? options.title
             : route.name;
 
-        if (
-          ['_sitemap', '+not-found', 'index', 'quran/[nomor]'].includes(
-            route.name
-          )
-        )
+        if (!['quran', 'hadits', 'doa', 'sholat'].includes(route.name))
           return null;
 
         const isFocused = state.index === index;
