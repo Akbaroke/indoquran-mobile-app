@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import React from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import axios from 'axios';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import TabBar from '@/components/TabBar';
-import { Image, StatusBar, Text, View } from 'react-native';
+import { ActivityIndicator, Image, StatusBar, Text, View } from 'react-native';
 import {
   useFonts,
   Quicksand_300Light,
@@ -27,7 +27,11 @@ const _layout = () => {
   });
 
   if (!fontsLoaded) {
-    return <Text>Loading...</Text>;
+    return (
+      <View className="py-4">
+        <ActivityIndicator size="large" color="#3cb09c" />
+      </View>
+    );
   }
 
   return (

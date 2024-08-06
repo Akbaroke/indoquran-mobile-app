@@ -14,7 +14,7 @@ export default function CardOptionHadits({ number, name, slug, total }: Props) {
   return (
     <TouchableOpacity
       onPress={() => router.push(`/hadits/${slug}`)}
-      className="flex-row items-center gap-7 border-b border-gray-200 cursor-pointer p-2 py-4 w-full">
+      className="flex-row items-center gap-x-7 border-b border-gray-200 cursor-pointer p-2 py-4 w-full">
       <View className="space-y-0">
         <Nomer number={number} />
       </View>
