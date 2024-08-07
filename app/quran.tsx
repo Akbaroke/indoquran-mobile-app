@@ -17,9 +17,7 @@ const QuranScreen = () => {
         const storedData = await AsyncStorage.getItem('surat_list');
         if (storedData) {
           setSurat(JSON.parse(storedData));
-          console.log(`list surat sudah tersedia`);
         } else {
-          console.log(`list surat belum tersedia`);
           const { data } = await axios.get(
             `${process.env.EXPO_PUBLIC_API_URL_1}/surat`
           );

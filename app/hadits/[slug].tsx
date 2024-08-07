@@ -1,10 +1,17 @@
-import CardHadits from '@/components/CardHadits';
+import CardHadits, { LoadingSkeletonCardHadits } from '@/components/CardHadits';
 import { HaditsDetailModel } from '@/interfaces/hadits-interface';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { FlatList, Text, View, ActivityIndicator } from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  ActivityIndicator,
+  ScrollView,
+} from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 function HaditsScreen() {
   const { slug } = useLocalSearchParams();
@@ -46,9 +53,7 @@ function HaditsScreen() {
           }
           setIsLoading(false);
           setIsLoadingMore(false);
-          console.log(`data hadits_${slug}_${page} sudah tersedia`);
         } else {
-          console.log(`data hadits_${slug}_${page} belum tersedia`);
           const { data } = await axios.get(
             `${process.env.EXPO_PUBLIC_API_URL_3}/${slug}?page=${page}`
           );
@@ -84,7 +89,6 @@ function HaditsScreen() {
           setIsLoadingMore(false);
         }
       } catch (error) {
-        console.log('Error :', error);
         setIsLoading(false);
         setIsLoadingMore(false);
       }
@@ -111,6 +115,36 @@ function HaditsScreen() {
       </View>
     ) : null;
   };
+
+  if (isLoading) {
+    return (
+      <ScrollView className="flex-1 bg-white px-6">
+        <View className="flex flex-col items-center justify-center gap-3 py-5 border-b border-gray-200 mt-3">
+          <View
+            className="bg-gray-100"
+            style={{
+              width: 200,
+              height: 20,
+              borderRadius: 4,
+            }}
+          />
+          <View
+            className="bg-gray-100"
+            style={{
+              width: 100,
+              height: 20,
+              borderRadius: 4,
+            }}
+          />
+        </View>
+        <View className="flex-col gap-5 my-5 pb-28">
+          {[...Array(5)].map((_, index) => (
+            <LoadingSkeletonCardHadits key={index} />
+          ))}
+        </View>
+      </ScrollView>
+    );
+  }
 
   return (
     <FlatList

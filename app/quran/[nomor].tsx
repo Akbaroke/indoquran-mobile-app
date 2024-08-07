@@ -20,9 +20,7 @@ const SuratScreen = () => {
         if (storedData) {
           setDataSurat(JSON.parse(storedData));
           setIsLoading(false);
-          console.log(`data surat_${nomor} sudah tersedia`);
         } else {
-          console.log(`data surat_${nomor} belum tersedia`);
           const { data } = await axios.get(
             `${process.env.EXPO_PUBLIC_API_URL_1}/surat/${nomor}`
           );

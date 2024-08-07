@@ -4,6 +4,7 @@ import CardOptionHadits from '@/components/CardOptionHadits';
 import { OptionHaditsModel } from '@/interfaces/hadits-interface';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { SkeletonCardSurat } from '@/components/CardSurat';
 
 const HaditsScreen = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -17,9 +18,7 @@ const HaditsScreen = () => {
         const storedData = await AsyncStorage.getItem('hadits_option');
         if (storedData) {
           setOptionHadits(JSON.parse(storedData));
-          console.log(`hadits option sudah tersedia`);
         } else {
-          console.log(`hadits option belum tersedia`);
           const { data } = await axios.get(
             process.env.EXPO_PUBLIC_API_URL_3 as string
           );
@@ -48,9 +47,11 @@ const HaditsScreen = () => {
         </Text>
       </View>
       <View className="pl-2 pb-28 items-center">
-        {optionHadits.map((item, index) => (
-          <CardOptionHadits key={index} number={index + 1} {...item} />
-        ))}
+        {isLoading
+          ? [...Array(6)].map((_, index) => <SkeletonCardSurat key={index} />)
+          : optionHadits.map((item, index) => (
+              <CardOptionHadits key={index} number={index + 1} {...item} />
+            ))}
       </View>
     </ScrollView>
   );
